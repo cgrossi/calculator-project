@@ -10,6 +10,10 @@ body {
     background: rgb(50, 50, 104);
 }
 
+h1 {
+    margin-bottom: 15px;
+}
+
 header {
     color: rgba(233, 233, 233, 0.952);
     text-align: center;
@@ -55,7 +59,12 @@ header {
     background: rgba(255, 239, 239, 0.644);
 }
 
+.equals {
+    background: rgba(255, 255, 255, 0.829);
+}
+
 .clear {
+    background: rgba(255, 255, 255, 0.829);
     grid-area: clear;
     grid-row: 5 / span 1;
 }

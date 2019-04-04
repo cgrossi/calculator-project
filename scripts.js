@@ -1,3 +1,15 @@
+const btn = document.querySelectorAll('.btn')
+const numBtn = document.querySelectorAll('.num')
+const opBtn = document.querySelectorAll('.operator')
+const display = document.querySelector('.display')
+const clearBtn = document.querySelector('.clear')
+const equalsBtn = document.querySelector('.equals')
+
+let firstNum = '';
+let secondNum = '';
+let operation = '';
+let displayValue = '';
+
 function add(a, b) {
     return a + b;
 }
@@ -26,47 +38,47 @@ function operate(operator, a, b) {
     }
 }
 
-const btn = document.querySelectorAll('.btn')
-const display = document.querySelector('.display')
-let first = '';
-let second = '';
-let displayValue = '';
+function clearDisplay() {
+    display.innerHTML = '0';
+}
 
-const btnClick = btn.forEach(function(el) {
-    if(!el.classList.contains('display')) {
-        el.addEventListener('click', function(e) {
-            console.log(typeof display.innerHTML)
-            if(display.innerHTML === '0') {
-                display.innerHTML = parseInt(e.target.innerHTML);
-                displayValue += parseInt(e.target.innerHTML)
-            } else {
-                console.log('else')
-                display.innerHTML += parseInt(e.target.innerHTML)
-                displayValue += parseInt(e.target.innerHTML)
-            }
-        })
+function renderNumbers(numClicked) {
+    if(display.innerHTML === '0') {
+        display.innerHTML = parseInt(numClicked.target.innerHTML);
+        displayValue += parseInt(numClicked.target.innerHTML)
+    } else {
+        display.innerHTML += parseInt(numClicked.target.innerHTML)
+        displayValue += parseInt(numClicked.target.innerHTML)
     }
+}
+
+function preEvaluate() {
+    secondNum = display.innerHTML.substring(display.innerHTML.lastIndexOf(' ') + 1)
+    operation = display.innerHTML.match(/[/+\-*]/)[0]
+}
+
+
+numBtn.forEach(function(el) {
+    el.addEventListener('click', function(e) {
+        renderNumbers(e)
+    })
 })
 
+opBtn.forEach(function(el) {
+    el.addEventListener('click', function(e) {
+        firstNum = displayValue;
+        display.innerHTML += ` ${e.target.innerHTML} `
+    })
+})
 
+clearBtn.addEventListener('click', function() {
+    clearDisplay();
+})
 
-
-
-
-// const one = document.querySelector('.one')
-// const two = document.querySelector('.two')
-// const three = document.querySelector('.three')
-// const four = document.querySelector('.four')
-// const five = document.querySelector('.five')
-// const six = document.querySelector('.six')
-// const seven = document.querySelector('.seven')
-// const eight = document.querySelector('.eight')
-// const nine = document.querySelector('.nine')
-// const zero = document.querySelector('.zero')
-// const clear = document.querySelector('.clear')
-// const add = document.querySelector('.add')
-// const subtract = document.querySelector('.subtract')
-// const multiply = document.querySelector('.multiply')
-// const divide = document.querySelector('.divide')
-// const equals = document.querySelector('.equals')
+equalsBtn.addEventListener('click', function() {
+    preEvaluate()
+    const parsedFirst = Number.parseInt(firstNum, 10)
+    const parsedSecond = Number.parseInt(secondNum, 10)
+    display.innerHTML = operate(operation, parsedFirst, parsedSecond)
+})
 
