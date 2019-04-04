@@ -16,7 +16,7 @@ body {
 
 body h1 {
     margin: 15px auto;
-    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.082);
+    text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.288);
 }
 
 header {
