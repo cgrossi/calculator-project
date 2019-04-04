@@ -15,7 +15,7 @@ body {
 }
 
 body h1 {
-    margin-bottom: 10px;
+    margin: 15px auto;
     text-shadow: 0 2px 0 rgba(0, 0, 0, 0.082);
 }
 
@@ -32,12 +32,12 @@ header {
 }
 
 .container {
-    padding: 10px 10vw;
+    margin: 10px 10vw;
     min-height: 75vh;
     max-height: 75vh;
     display: grid;
-    /* grid-template-columns: repeat(autofit, minmax(50px, 1fr)); */
-    /* grid-template-rows: repeat(autofit, minmax(50px, 1fr)); */
+    /* grid-template-columns: repeat(autofit, minmax(50px, 1fr));
+    grid-template-rows: repeat(autofit, minmax(50px, 1fr)); */
     grid-gap: 10px;
     grid-template-areas: 
         "display display display display"
@@ -68,11 +68,11 @@ header {
 }
 
 .equals {
-    background: rgba(255, 255, 255, 0.829);
+    background: rgba(230, 230, 230, 0.986);
 }
 
 .clear {
-    background: rgba(255, 255, 255, 0.829);
+    background: rgba(230, 230, 230, 0.986);
     grid-area: clear;
     grid-row: 5 / span 1;
 }
