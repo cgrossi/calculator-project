@@ -3,37 +3,135 @@
 
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}html,button,input,select,textarea{font-family:sans-serif;}body{margin:0;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;margin:0.67em 0;}h2{font-size:1.5em;margin:0.83em 0;}h3{font-size:1.17em;margin:1em 0;}h4{font-size:1em;margin:1.33em 0;}h5{font-size:0.83em;margin:1.67em 0;}h6{font-size:0.75em;margin:2.33em 0;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:bold;}blockquote{margin:1em 40px;}dfn{font-style:italic;}mark{background:#ff0;color:#000;}p,pre{margin:1em 0;}code,kbd,pre,samp{font-family:monospace,serif;_font-family:'courier new',monospace;font-size:1em;}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word;}q{quotes:none;}q:before,q:after{content:'';content:none;}small{font-size:75%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-0.5em;}sub{bottom:-0.25em;}dl,menu,ol,ul{margin:1em 0;}dd{margin:0 0 0 40px;}menu,ol,ul{padding:0 0 0 40px;}nav ul,nav ol{list-style:none;list-style-image:none;}img{border:0;-ms-interpolation-mode:bicubic;}svg:not(:root){overflow:hidden;}figure{margin:0;}form{margin:0;}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}legend{border:0;padding:0;white-space:normal;*margin-left:-7px;}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle;}button,input{line-height:normal;}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;*overflow:visible;}button[disabled],input[disabled]{cursor:default;}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;*height:13px;*width:13px;}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}
 
-.btn {
-    font-size: 3rem;
+
+body {
+    margin: 20px;
+    color: rgb(48, 48, 48);
+    background: rgb(50, 50, 104);
+}
+
+header {
+    color: rgba(233, 233, 233, 0.952);
     text-align: center;
-    padding: 5px;
-    width: 300px;
+    font-size: 1.5rem;
+}
+.btn {
+    min-height: 75px;
+    min-width: 50px;
+    font-size: 3rem;
+    display: grid;
+    justify-content: center;
+    align-content: center;
 }
 
 .container {
-    display: flex;
-    border: 10px solid black;
-    height: 500px;
+    display: grid;
+    min-height: 650px;
+    /* grid-template-columns: repeat(autofit, minmax(50px, 1fr)); */
+    /* grid-template-rows: repeat(autofit, minmax(50px, 1fr)); */
+    grid-gap: 10px;
+    grid-template-areas: 
+        "display display display display"
+        "7 8 9 divide"
+        "4 5 6 multiply"
+        "1 2 3 subtract"
+        "clear zero equals add";
 }
 
 .display {
-    font-size: 2rem;
+    grid-area: display;
+    grid-column: 1 / -1;
+    justify-content: end;
+    font-size: 4rem;
+    padding-right: 20px;
+    background: rgba(230, 230, 230, 0.986);
 }
 
-.one { background-color: powderblue; }
-.two { background-color: olive; }
-.three { background-color: palevioletred; }
-.four { background-color: firebrick; }
-.five { background-color: darkslategray; }
-.six { background-color: seagreen; }
-.seven { background-color: burlywood; }
-.eight { background-color: hotpink; }
-.nine { background-color: cornflowerblue; }
-.zero { background-color: goldenrod; }
-.add { background-color: cadetblue; }
-.subtract { background-color: honeydew; }
-.multiply { background-color: crimson; }
-.divide { background-color: chocolate; }
-.multiply { background-color: lightseagreen; }
-.equals { background-color: rebeccapurple; }
-.clear { background-color: indianred }
+.num {
+    background: rgba(191, 201, 216, 0.801);
+}
+
+.operator {
+    background: rgba(255, 239, 239, 0.644);
+}
+
+.clear {
+    grid-area: clear;
+    grid-row: 5 / span 1;
+}
+.add {
+    grid-area: add;
+    grid-row: 5 / 5;
+    grid-column: 4 / 4;
+}
+.subtract {
+    grid-area: subtract;
+    grid-row: 4 / 4;
+    grid-column: 4 / 4;
+}
+.multiply {
+    grid-area: multiply;
+    grid-row: 3 / 3;
+    grid-column: 4 / 4;
+}
+.divide {
+    grid-area: divide;
+    grid-row: 2 / 2;
+    grid-column: 4 / 4;
+}
+.equals {
+    grid-area: equals;
+    grid-row: 5 / 5;
+    grid-column: 3 / 3;
+}
+.one {
+    grid-area: 1;
+    grid-row: 4 / 4;
+    grid-column: 1 / 1;
+}
+.two {
+    grid-area: 2;
+    grid-row: 4 / 4;
+    grid-column: 2 / 2;
+}
+.three {
+    grid-area: 3;
+    grid-row: 4 / 4;
+    grid-column: 3 / 3;
+}
+.four {
+    grid-area: 4;
+    grid-row: 3 / 3;
+    grid-column: 1 / 1;
+}
+.five {
+    grid-area: 5;
+    grid-row: 3 / 3;
+    grid-column: 2 / 2;
+}
+.six {
+    grid-area: 6;
+    grid-row: 3 / 3;
+    grid-column: 3 / 3;
+}
+.seven {
+    grid-area: 7;
+    grid-row: 2 / 2;
+    grid-column: 1 / 1;
+}
+.eight {
+    grid-area: 8;
+    grid-row: 2 / 2;
+    grid-column: 2 / 2;
+}
+.nine {
+    grid-area: 9;
+    grid-row: 2 / 2;
+    grid-column: 3 / 3;
+}
+.zero {
+    grid-area: zero;
+    grid-row: 5 / 5;
+    grid-column: 2 / 2;
+}
+
