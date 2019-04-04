@@ -9,6 +9,7 @@ let firstNum = '';
 let secondNum = '';
 let operation = '';
 let displayValue = '';
+let evaluated = false;
 
 function add(a, b) {
     return a + b;
@@ -38,37 +39,49 @@ function operate(operator, a, b) {
     }
 }
 
+function resetValues() {
+    firstNum = '';
+    secondNum = '';
+    operation = '';
+    displayValue = '';
+}
+
 function clearDisplay() {
     display.innerHTML = '0';
+    resetValues();
 }
 
 function renderNumbers(numClicked) {
-    if(display.innerHTML === '0') {
+    if(display.innerHTML === '0' || evaluated) {
         display.innerHTML = parseInt(numClicked.target.innerHTML);
-        displayValue += parseInt(numClicked.target.innerHTML)
+        if(evaluated) {
+            evaluated = false;
+            resetValues();
+            }
+        displayValue += parseInt(numClicked.target.innerHTML);
     } else {
-        display.innerHTML += parseInt(numClicked.target.innerHTML)
-        displayValue += parseInt(numClicked.target.innerHTML)
+        display.innerHTML += parseInt(numClicked.target.innerHTML);
+        displayValue += parseInt(numClicked.target.innerHTML);
     }
 }
 
 function preEvaluate() {
-    secondNum = display.innerHTML.substring(display.innerHTML.lastIndexOf(' ') + 1)
-    operation = display.innerHTML.match(/[/+\-*]/)[0]
+    secondNum = display.innerHTML.substring(display.innerHTML.lastIndexOf(' ') + 1);
+    operation = display.innerHTML.match(/[/+\-*]/)[0];
 }
 
 
 numBtn.forEach(function(el) {
     el.addEventListener('click', function(e) {
-        renderNumbers(e)
-    })
+        renderNumbers(e);
+    });
 })
 
 opBtn.forEach(function(el) {
     el.addEventListener('click', function(e) {
         firstNum = displayValue;
-        display.innerHTML += ` ${e.target.innerHTML} `
-    })
+        display.innerHTML += ` ${e.target.innerHTML} `;
+    });
 })
 
 clearBtn.addEventListener('click', function() {
@@ -76,9 +89,10 @@ clearBtn.addEventListener('click', function() {
 })
 
 equalsBtn.addEventListener('click', function() {
-    preEvaluate()
-    const parsedFirst = Number.parseInt(firstNum, 10)
-    const parsedSecond = Number.parseInt(secondNum, 10)
-    display.innerHTML = operate(operation, parsedFirst, parsedSecond)
+    preEvaluate();
+    const parsedFirst = Number.parseInt(firstNum, 10);
+    const parsedSecond = Number.parseInt(secondNum, 10);
+    display.innerHTML = operate(operation, parsedFirst, parsedSecond);
+    evaluated = true;
 })
 
