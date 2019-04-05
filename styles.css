@@ -15,7 +15,7 @@ body {
 }
 
 body h1 {
-    margin: 15px auto;
+    padding: 10px;
     text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.288);
 }
 
@@ -32,6 +32,8 @@ header {
 }
 
 .container {
+    background: rgba(189, 189, 189, 0.507);
+    border: 8px solid rgba(95, 79, 79, 0.226);
     margin: 10px 10vw;
     min-height: 75vh;
     max-height: 75vh;
@@ -41,114 +43,129 @@ header {
     grid-gap: 10px;
     grid-template-areas: 
         "display display display display"
+        ". clear backpspace equals"
         "7 8 9 divide"
         "4 5 6 multiply"
         "1 2 3 subtract"
-        "clear zero equals add";
+        ". zero . add";
 }
 
 .display {
     grid-area: display;
     overflow:hidden;
+    min-height: 90px;
     grid-column: 1 / -1;
     justify-content: end;
-    font-size: 4rem;
+    font-size: 3.75rem;
     padding-right: 20px;
-    padding-left: 20px;
     white-space: nowrap;
-    background: rgba(230, 230, 230, 0.986);
 }
 
 .num {
-    background: rgba(191, 201, 216, 0.801);
+    background: rgba(194, 203, 216, 0.89);
+}
+.num:hover {
+    background: rgba(211, 217, 224, 0.925);
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.5);
+    transform: scale(1.01);
 }
 
-.operator {
-    background: rgba(255, 239, 239, 0.644);
+.operator,
+.mod,
+.display {
+    background: rgba(255, 255, 255, 0.774);
 }
 
-.equals {
-    background: rgba(230, 230, 230, 0.986);
+.operator:hover,
+.mod:hover {
+    background: rgba(230, 230, 230, 0.479);
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.164);
+    transform: scale(1.01);
 }
-
 .clear {
-    background: rgba(230, 230, 230, 0.986);
     grid-area: clear;
-    grid-row: 5 / span 1;
+    grid-row: 2 / 2;
+    grid-column: 2 / 2;
 }
 .add {
     grid-area: add;
-    grid-row: 5 / 5;
+    grid-row: 6 / 6;
     grid-column: 4 / 4;
 }
+
 .subtract {
     grid-area: subtract;
-    grid-row: 4 / 4;
+    grid-row: 5 / 5;
     grid-column: 4 / 4;
 }
 .multiply {
     grid-area: multiply;
-    grid-row: 3 / 3;
+    grid-row: 4 / 4;
     grid-column: 4 / 4;
 }
 .divide {
     grid-area: divide;
-    grid-row: 2 / 2;
+    grid-row: 3 / 3;
     grid-column: 4 / 4;
 }
 .equals {
     grid-area: equals;
-    grid-row: 5 / 5;
+    grid-row: 2 / 2;
+    grid-column: 4 / 4;
+}
+.backspace {
+    grid-area: backspace;
+    grid-row: 2 / 2;
     grid-column: 3 / 3;
 }
 .one {
     grid-area: 1;
-    grid-row: 4 / 4;
+    grid-row: 5 / 5;
     grid-column: 1 / 1;
 }
 .two {
     grid-area: 2;
-    grid-row: 4 / 4;
+    grid-row: 5 / 5;
     grid-column: 2 / 2;
 }
 .three {
     grid-area: 3;
-    grid-row: 4 / 4;
+    grid-row: 5 / 5;
     grid-column: 3 / 3;
 }
 .four {
     grid-area: 4;
-    grid-row: 3 / 3;
+    grid-row: 4 / 4;
     grid-column: 1 / 1;
 }
 .five {
     grid-area: 5;
-    grid-row: 3 / 3;
+    grid-row: 4 / 4;
     grid-column: 2 / 2;
 }
 .six {
     grid-area: 6;
-    grid-row: 3 / 3;
+    grid-row: 4 / 4;
     grid-column: 3 / 3;
 }
 .seven {
     grid-area: 7;
-    grid-row: 2 / 2;
+    grid-row: 3 / 3;
     grid-column: 1 / 1;
 }
 .eight {
     grid-area: 8;
-    grid-row: 2 / 2;
+    grid-row: 3 / 3;
     grid-column: 2 / 2;
 }
 .nine {
     grid-area: 9;
-    grid-row: 2 / 2;
+    grid-row: 3 / 3;
     grid-column: 3 / 3;
 }
 .zero {
     grid-area: zero;
-    grid-row: 5 / 5;
+    grid-row: 6 / 6;
     grid-column: 2 / 2;
 }
 
